@@ -312,7 +312,7 @@ public:
 class SetFieldAction: public Action {
 private:
     OXMTLV* field_;
-    const uint16_t set_order_;
+    uint16_t set_order_;
 public:
     SetFieldAction();
     SetFieldAction(OXMTLV* field);
@@ -323,8 +323,11 @@ public:
     uint16_t set_order() const {
         return this->set_order_;
     }
+    void set_order(uint16_t set_order) {
+        this->set_order_ = set_order;
+    }
     virtual uint16_t set_sub_order() const {
-	return this->field_ ? this->field_->field() : 0;
+	      return this->field_ ? this->field_->field() : 0;
     }
     size_t pack(uint8_t *buffer);
     of_error unpack(uint8_t *buffer);
