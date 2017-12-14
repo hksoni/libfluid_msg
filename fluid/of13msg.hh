@@ -532,6 +532,7 @@ public:
     }
     void buckets(std::vector<Bucket> buckets);
     void add_bucket(Bucket bucket);
+    bool del_bucket(size_t pos);
     size_t buckets_len();
 };
 

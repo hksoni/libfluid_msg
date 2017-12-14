@@ -870,6 +870,16 @@ void GroupMod::add_bucket(Bucket bucket) {
     this->length_ += bucket.len();
 }
 
+bool GroupMod::del_bucket(size_t pos) {
+    if (pos<this->buckets_.size()) {
+        this->length_ -= this->buckets_[pos].len();
+        this->buckets_.erase(this->buckets_.begin()+pos);
+        return true;
+    } else {
+        return false;
+    }
+}
+
 size_t GroupMod::buckets_len() {
     size_t len = 0;
     for (std::vector<Bucket>::iterator it = this->buckets_.begin();
